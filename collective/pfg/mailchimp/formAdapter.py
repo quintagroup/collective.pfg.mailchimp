@@ -55,6 +55,24 @@ mailchimpSubscribeAdapterSchema = FormAdapterSchema.copy() + atapi.Schema((
             description = _(u"")
             ),
         ),
+
+    atapi.StringField('mailchimp_api_key',
+        searchable=0,
+        required=1,
+        widget=atapi.StringWidget(
+            label = _(u"Mailchimp Api Key"),
+            description = _(u"")
+            ),
+        ),
+
+    atapi.StringField('mailchimp_list_id',
+        searchable=0,
+        required=1,
+        widget=atapi.StringWidget(
+            label = _(u"Mailchimp List ID"),
+            description = _(u"")
+            ),
+        ),
 ))
 
 finalizeATCTSchema(mailchimpSubscribeAdapterSchema, moveDiscussion=False)
@@ -97,15 +115,11 @@ class MailchimpSubscribeAdapter(FormActionAdapter):
         merge_vars = self.get_merge_vars(request)
         if not (email or merge_vars):
             return
-        properties = getToolByName(self, 'portal_properties')
-        chimp_props = getattr(properties, 'mailchimp_properties', None)
-        if chimp_props:
-            api_key = getattr(chimp_props, 'mailchimp_api_key', '')
-            list_id = getattr(chimp_props, 'mailchimp_list_id', '')
+        if self.mailchimp_api_key and self.mailchimp_list_id:
             try:
-                chimp = Connection(api_key)
+                chimp = Connection(self.mailchimp_api_key)
                 chimp.list_subscribe(
-                    id=list_id,
+                    id=self.mailchimp_list_id,
                     email_address=email,
                     merge_vars=merge_vars,
                     double_optin=False)
