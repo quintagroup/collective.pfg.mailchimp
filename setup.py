@@ -28,6 +28,7 @@ setup(name='collective.pfg.mailchimp',
           # -*- Extra requirements: -*-
           'Products.PloneFormGen',
           'collective.mailchimp',
+          'chimpy'
       ],
       entry_points="""
       # -*- Entry points: -*-
