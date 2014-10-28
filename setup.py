@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1'
+version = '1.0.0qg'
 
 setup(name='collective.pfg.mailchimp',
       version=version,
