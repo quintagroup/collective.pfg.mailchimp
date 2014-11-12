@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.pfg.mailchimp">
+
+    <gs:upgradeStep
+        title="Upgrade collective.pfg.mailchimp 1.0.1"
+        description="collective.pfg.mailchimp upgrade step"
+        source="1"
+        destination="1.0.1"
+        handler=".upgrades.upgrade_to_1_0_1"
+        profile="collective.pfg.mailchimp:default" />
+
+</configure>
