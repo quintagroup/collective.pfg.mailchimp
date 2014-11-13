@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.1qg - 11/13/2014
+----------------
+
+- Added element 'Mailchimp Subscribe Adapter' in the FormFolder content type
+
 0.1 - Unreleased
 ----------------
 
